@@ -8,7 +8,7 @@ http.createServer(function (req, res) {
         // 対象になっているレポジトリ名を取得
         var repName = req.url.substr(1);
 
-        if (!repName) {
+        if (!repName || repName.match(/\//)) {
                 return notFound(res);
         }
 
@@ -21,7 +21,7 @@ http.createServer(function (req, res) {
         };
 
         // bareレポジトリを更新するスクリプトを作成
-        // (実在するpathを埋め込むだけなので、セキュリティはたぶん大丈夫…)
+        // (実在する、gitRoot直下のpathを埋め込むだけなので、たぶんせきゅあ…)
         var sh = [
                 'cd ' + repPath,
                 'git fetch',
