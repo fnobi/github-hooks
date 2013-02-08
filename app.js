@@ -4,6 +4,8 @@ var http   = require('http'),
     config = require('config'),
     exec   = require('child_process').exec;
 
+process.env.NODE_CONFIG_DIR = __dirname + '/config';
+
 http.createServer(function (req, res) {
         // 対象になっているレポジトリ名を取得
         var repName = req.url.substr(1);
