@@ -1,10 +1,10 @@
+process.env.NODE_CONFIG_DIR = __dirname + '/config';
+
 var http   = require('http'),
     fs     = require('fs'),
     path   = require('path'),
     config = require('config'),
     exec   = require('child_process').exec;
-
-process.env.NODE_CONFIG_DIR = __dirname + '/config';
 
 http.createServer(function (req, res) {
         // 対象になっているレポジトリ名を取得
