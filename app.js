@@ -22,6 +22,9 @@ http.createServer(function (req, res) {
                 return notFound(res);
         };
 
+	// 実験用・reqを保存
+        fs.writeFileSync(__dirname + '/req.log', 'utf8', JSON.stringify(req));
+
         // bareレポジトリを更新するスクリプトを作成
         // (実在する、gitRoot直下のpathを埋め込むだけなので、たぶんせきゅあ…)
         var sh = [
