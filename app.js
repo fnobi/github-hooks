@@ -1,5 +1,3 @@
-process.env.NODE_CONFIG_DIR = __dirname + '/config';
-
 var http   = require('http'),
     fs     = require('fs'),
     path   = require('path'),
@@ -21,9 +19,6 @@ http.createServer(function (req, res) {
         if (!fs.existsSync(repPath)) {
                 return notFound(res);
         };
-
-	// 実験用・reqを保存
-        fs.writeFileSync(__dirname + '/req.log', 'utf8', JSON.stringify(req));
 
         // bareレポジトリを更新するスクリプトを作成
         // (実在する、gitRoot直下のpathを埋め込むだけなので、たぶんせきゅあ…)
