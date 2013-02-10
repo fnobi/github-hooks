@@ -5,7 +5,7 @@
         "main": "app.js",
         "scripts": {
                 "test": "echo \"Error: no test specified\" && exit 1",
-                "start": "NODE_ENV=production forever start -a -o log/github-hooks.out.log -e log/github-hooks.err.log $PWD/app.js",
+                "start": "NODE_ENV=production NODE_CONFIG_PATH=$PWD/config forever start -a -o log/github-hooks.out.log -e log/github-hooks.err.log $PWD/app.js",
                 "stop": "forever stop $PWD/app.js"
         },
         "repository": "",
