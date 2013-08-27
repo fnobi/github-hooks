@@ -27,14 +27,20 @@ http.createServer(function (req, res) {
         return notFound(res);
     };
 
+    // bareかどうか
+    var isBare = fs.existsSync(path.join(repoPath, '.git')) ? false : true;
+
 
     // レポジトリを更新するスクリプトを作成
     // (実在する、gitRoot直下のpathを埋め込むだけなので、たぶんせきゅあ…)
-    var sh = [
+    var sh = isBare ? [
         'cd ' + repoPath,
         'git fetch',
         'git reset --soft refs/remotes/origin/master'
-    ].join(' && ');
+    ].join(' && ') : [
+        'cd ' + repoPath,
+        'git pull --rebase origin master'
+    ];
 
     console.log(sh);
 
