@@ -10,17 +10,20 @@ http.createServer(function (req, res) {
     // 対象になっているレポジトリ名を取得
     var repName = req.url.substr(1);
     if (!repName) {
+        console.log('no remoto repo.');
         return notFound(res);
     }
 
     // ローカルレポジトリの場所
     var repoPath = localRepos[repName];
     if (!repoPath) {
+        console.log('no matching local repo.');
         return notFound(res);
     }
 
     // repoPathの存在確認
     if (!fs.existsSync(repoPath)) {
+        console.log('local repo does not exist.');
         return notFound(res);
     };
 
