@@ -36,8 +36,12 @@ http.createServer(function (req, res) {
         'git reset --soft refs/remotes/origin/master'
     ].join(' && ');
 
+    console.log(sh);
+
     // 実行
     exec(sh, function (error, stdout, stderr) {
+        console.log(stdout);
+
         if (error) {
             res.writeHead(500, {'Content-Type': 'application/json'});
             res.write(JSON.stringify({
