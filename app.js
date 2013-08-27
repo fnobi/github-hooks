@@ -47,6 +47,7 @@ http.createServer(function (req, res) {
     // 実行
     exec(sh, function (error, stdout, stderr) {
         console.log(stdout);
+        console.log(stderr);
 
         if (error) {
             res.writeHead(500, {'Content-Type': 'application/json'});
