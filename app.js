@@ -40,7 +40,7 @@ http.createServer(function (req, res) {
     ].join(' && ') : [
         'cd ' + repoPath,
         'git pull --rebase origin master'
-    ];
+    ].join(' && ');
 
     console.log(sh);
 
